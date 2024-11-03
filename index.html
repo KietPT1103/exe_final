@@ -58,30 +58,32 @@
 
 
 	<script>
-		// Hàm xử lý khi marker được phát hiện
-		function handleMarkerEvents(markerId, videoId) {
-			var marker = document.getElementById(markerId);
-			var video = document.getElementById(videoId);
+		function checkMarkersAndPlayAudio() {
+			// Lấy các marker và video
+			const markers = [
+				{ marker: document.getElementById('bird-marker'), video: document.getElementById('bird-video') },
+				{ marker: document.getElementById('cat-marker'), video: document.getElementById('cat-video') },
+				{ marker: document.getElementById('mouse-marker'), video: document.getElementById('mouse-video') },
+				{ marker: document.getElementById('dog-marker'), video: document.getElementById('dog-video') },
+				{ marker: document.getElementById('fish-marker'), video: document.getElementById('fish-video') },
+				// Thêm các marker-video khác ở đây
+			];
 
-			// Khi marker được phát hiện
-			marker.addEventListener('markerFound', function () {
-				video.muted = false;  // Bật âm thanh
-				video.play();         // Phát video
-			});
-
-			// Khi marker bị mất
-			marker.addEventListener('markerLost', function () {
-				video.muted = true;   // Tắt âm thanh
-				video.pause();        // Dừng video
+			// Kiểm tra từng marker
+			markers.forEach(item => {
+				const { marker, video } = item;
+				// Nếu marker hiển thị
+				if (marker.object3D.visible) {
+					if (video.paused) video.play();
+					video.muted = false; // Bật âm thanh
+				} else {
+					video.muted = true; // Tắt âm thanh
+					if (!video.paused) video.pause();
+				}
 			});
 		}
 
-		// Gọi hàm với các marker và video tương ứng
-		handleMarkerEvents('bird-marker', 'bird-video');
-		handleMarkerEvents('cat-marker', 'cat-video');
-		handleMarkerEvents('mouse-marker', 'mouse-video');
-		handleMarkerEvents('fish-marker', 'fish-video');
-		handleMarkerEvents('dog-marker', 'dog-video');
-		// Thêm các marker khác tương tự
+		// Thiết lập kiểm tra mỗi 500ms
+		setInterval(checkMarkersAndPlayAudio, 500);
 	</script>
 </body>
