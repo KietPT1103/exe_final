@@ -60,16 +60,44 @@
 
 	<script>
 		// Lắng nghe sự kiện khi marker được quét
-		const marker = document.querySelector('#bird-marker');
-		marker.addEventListener('markerFound', () => {
-			alert('Marker đã được quét!');
-			// Thực hiện các hành động khác khi marker được quét
-		});
+		const birdMarker = document.querySelector('#bird-marker');
+		const catMarker = document.querySelector('#cat-marker');
+		const mouseMarker = document.querySelector('#mouse-marker');
+		const fishMarker = document.querySelector('#fish-marker');
+		const dogMarker = document.querySelector('#dog-marker');
 
-		// Lắng nghe sự kiện khi marker bị mất
-		marker.addEventListener('markerLost', () => {
-			alert('Marker đã bị mất!');
-			// Thực hiện các hành động khác khi marker bị mất
-		});
+		const birdVideo = document.querySelector('#bird-video');
+		const catVideo = document.querySelector('#cat-video');
+		const mouseVideo = document.querySelector('#mouse-video');
+		const fishVideo = document.querySelector('#fish-video');
+		const dogVideo = document.querySelector('#dog-video');
+
+		// Hàm bật âm thanh cho video
+		function unmuteVideo(video) {
+			video.muted = false;
+			video.play();  // Chơi lại video khi phát hiện marker
+		}
+
+		// Hàm tắt âm thanh cho video
+		function muteVideo(video) {
+			video.muted = true;
+			video.pause();  // Tạm dừng video khi mất marker
+		}
+
+		// Gán sự kiện `markerFound` và `markerLost` cho các marker
+		birdMarker.addEventListener('markerFound', () => unmuteVideo(birdVideo));
+		birdMarker.addEventListener('markerLost', () => muteVideo(birdVideo));
+
+		catMarker.addEventListener('markerFound', () => unmuteVideo(catVideo));
+		catMarker.addEventListener('markerLost', () => muteVideo(catVideo));
+
+		mouseMarker.addEventListener('markerFound', () => unmuteVideo(mouseVideo));
+		mouseMarker.addEventListener('markerLost', () => muteVideo(mouseVideo));
+
+		fishMarker.addEventListener('markerFound', () => unmuteVideo(fishVideo));
+		fishMarker.addEventListener('markerLost', () => muteVideo(fishVideo));
+
+		dogMarker.addEventListener('markerFound', () => unmuteVideo(dogVideo));
+		dogMarker.addEventListener('markerLost', () => muteVideo(dogVideo));
 	</script>
 </body>
