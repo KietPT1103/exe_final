@@ -7,11 +7,12 @@
 	<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
 	<script>
 		window.onload = function () {
-
-			const videos = document.querySelectorAll('a-video');
-			videos.forEach(video => {
-				video.components.material.material.map.image.muted = true;
-			});
+			setTimeout(function () {
+				const videos = document.querySelectorAll('a-video');
+				videos.forEach(video => {
+					video.components.material.material.map.image.muted = true;
+				});
+			}, 100);
 			setTimeout(function () {
 				var resizeEvent = window.document.createEvent('UIEvents');
 				resizeEvent.initUIEvent('resize', true, false, window, 0);
