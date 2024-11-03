@@ -59,6 +59,11 @@
 	</a-scene>
 
 	<script>
+		const videos = document.querySelectorAll('a-video');
+		videos.forEach(video => {
+			video.components.material.material.map.image.muted = true;
+		});
+
 		// Lắng nghe sự kiện khi marker được quét
 		const birdMarker = document.querySelector('#bird-marker');
 		const catMarker = document.querySelector('#cat-marker');
@@ -72,14 +77,19 @@
 		const fishVideo = document.getElementById('fish-video');
 		const dogVideo = document.getElementById('dog-video');
 
+		// Hàm bật âm thanh cho video
 		function unmuteVideo(video) {
-			video.play();  
+			video.muted = false;
+			video.play();  // Chơi lại video khi phát hiện marker
 		}
 
+		// Hàm tắt âm thanh cho video
 		function muteVideo(video) {
-			video.pause();  
+			video.muted = true;
+			video.pause();
 		}
 
+		// Gán sự kiện `markerFound` và `markerLost` cho các marker
 		birdMarker.addEventListener('markerFound', () => unmuteVideo(birdVideo));
 		birdMarker.addEventListener('markerLost', () => muteVideo(birdVideo));
 
