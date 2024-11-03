@@ -59,14 +59,17 @@
 	</a-scene>
 
 	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			// Tắt âm thanh ngay khi DOM được tải
-			const videos = document.querySelectorAll('a-video');
-			videos.forEach(video => {
-				video.addEventListener('loadeddata', () => {
-					video.components.material.material.map.image.muted = true;
-				});
-			});
+		// Lắng nghe sự kiện khi marker được quét
+		const marker = document.querySelector('#bird-marker');
+		marker.addEventListener('markerFound', () => {
+		  console.log('Marker đã được quét!');
+		  // Thực hiện các hành động khác khi marker được quét
 		});
-	</script>
+  
+		// Lắng nghe sự kiện khi marker bị mất
+		marker.addEventListener('markerLost', () => {
+		  console.log('Marker đã bị mất!');
+		  // Thực hiện các hành động khác khi marker bị mất
+		});
+	  </script>
 </body>
