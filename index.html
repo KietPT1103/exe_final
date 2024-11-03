@@ -7,7 +7,7 @@
 	<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
 	<script>
 		window.onload = function () {
-			
+
 			setTimeout(function () {
 				var resizeEvent = window.document.createEvent('UIEvents');
 				resizeEvent.initUIEvent('resize', true, false, window, 0);
@@ -62,14 +62,14 @@
 		// Lắng nghe sự kiện khi marker được quét
 		const marker = document.querySelector('#bird-marker');
 		marker.addEventListener('markerFound', () => {
-		  console.log('Marker đã được quét!');
-		  // Thực hiện các hành động khác khi marker được quét
+			alert('Marker đã được quét!');
+			// Thực hiện các hành động khác khi marker được quét
 		});
-  
+
 		// Lắng nghe sự kiện khi marker bị mất
 		marker.addEventListener('markerLost', () => {
-		  console.log('Marker đã bị mất!');
-		  // Thực hiện các hành động khác khi marker bị mất
+			alert('Marker đã bị mất!');
+			// Thực hiện các hành động khác khi marker bị mất
 		});
-	  </script>
+	</script>
 </body>
