@@ -1,55 +1,48 @@
 <!DOCTYPE html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 	<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
 	<script>
-		function toggleVideo(id, play) {
-			const video = document.querySelector(`#${id}`);
-			if (play) {
-				video.components.material.material.map.image.muted = false;
-				video.play();
-			} else {
-				video.pause();
-				video.components.material.material.map.image.muted = true;
-			}
-		}
+		window.onload = function () {
+			setTimeout(function () {
+				var resizeEvent = window.document.createEvent('UIEvents');
+				resizeEvent.initUIEvent('resize', true, false, window, 0);
+				window.dispatchEvent(resizeEvent);
+			}, 3000);
+		};	
 	</script>
 </head>
 
-<body style='margin: 0px; overflow: hidden;'>
+<body style='margin : 0px; overflow: hidden;'>
 	<a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
-		<a-marker preset='custom' type='pattern' url='/marker/pattern-bird.patt' 
-			onmarkerfound="toggleVideo('birdVideo', true)" onmarkerlost="toggleVideo('birdVideo', false)">
-			<a-video id="birdVideo" src="./media/video/bird.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
-				scale="0.1 0.2 1" muted></a-video>
+		<a-marker preset='custom' type='pattern' url='/marker/pattern-bird.patt'>
+			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/bird_orange.glb"></a-entity> -->
+			<a-video src="./media/video/bird.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+				scale="0.1 0.2 1"></a-video>
 		</a-marker>
-		
-		<a-marker preset='custom' type='pattern' url='/marker/pattern-cat.patt' 
-			onmarkerfound="toggleVideo('catVideo', true)" onmarkerlost="toggleVideo('catVideo', false)">
-			<a-video id="catVideo" src="./media/video/cat.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
-				scale="0.1 0.3 1" muted></a-video>
+		<a-marker preset='custom' type='pattern' url='/marker/pattern-cat.patt'>
+			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/cat.glb"></a-entity> -->
+			<a-video src="./media/video/cat.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+				scale="0.1 0.3 1"></a-video>
 		</a-marker>
-
-		<a-marker preset='custom' type='pattern' url='/marker/pattern-dog.patt' 
-			onmarkerfound="toggleVideo('dogVideo', true)" onmarkerlost="toggleVideo('dogVideo', false)">
-			<a-video id="dogVideo" src="./media/video/dog.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
-				scale="0.1 0.2 1" muted></a-video>
+		<a-marker preset='custom' type='pattern' url='/marker/pattern-dog.patt'>
+			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/dog2.glb"></a-entity> -->
+			<a-video src="./media/video/dog.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+				scale="0.1 0.2 1"></a-video>
 		</a-marker>
-
-		<a-marker preset='custom' type='pattern' url='/marker/pattern-fish.patt' 
-			onmarkerfound="toggleVideo('fishVideo', true)" onmarkerlost="toggleVideo('fishVideo', false)">
-			<a-video id="fishVideo" src="./media/video/fish.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
-				scale="0.2 0.2 1" muted></a-video>
+		<a-marker preset='custom' type='pattern' url='/marker/pattern-fish.patt'>
+			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/fish.glb"></a-entity> -->
+			<a-video src="./media/video/fish.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+				scale="0.2 0.2 1"></a-video>
 		</a-marker>
-
-		<a-marker preset='custom' type='pattern' url='/marker/pattern-mouse.patt' 
-			onmarkerfound="toggleVideo('mouseVideo', true)" onmarkerlost="toggleVideo('mouseVideo', false)">
-			<a-video id="mouseVideo" src="./media/video/hamster.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
-				scale="0.1 0.2 1" muted></a-video>
+		<a-marker preset='custom' type='pattern' url='/marker/pattern-mouse.patt'>
+			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/mouse.glb"></a-entity> -->
+			<a-video src="./media/video/hamster.mp4" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+				scale="0.1 0.2 1"></a-video>
 		</a-marker>
-
 		<a-entity camera></a-entity>
 	</a-scene>
 </body>
