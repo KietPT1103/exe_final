@@ -66,25 +66,20 @@
 		const fishMarker = document.querySelector('#fish-marker');
 		const dogMarker = document.querySelector('#dog-marker');
 
-		const birdVideo = document.querySelector('#bird-video');
-		const catVideo = document.querySelector('#cat-video');
-		const mouseVideo = document.querySelector('#mouse-video');
-		const fishVideo = document.querySelector('#fish-video');
-		const dogVideo = document.querySelector('#dog-video');
+		const birdVideo = document.getElementById('bird-video');
+		const catVideo = document.getElementById('cat-video');
+		const mouseVideo = document.getElementById('mouse-video');
+		const fishVideo = document.getElementById('fish-video');
+		const dogVideo = document.getElementById('dog-video');
 
-		// Hàm bật âm thanh cho video
 		function unmuteVideo(video) {
-			video.muted = false;
-			video.play();  // Chơi lại video khi phát hiện marker
+			video.play();  
 		}
 
-		// Hàm tắt âm thanh cho video
 		function muteVideo(video) {
-			video.muted = true;
-			video.pause();  // Tạm dừng video khi mất marker
+			video.pause();  
 		}
 
-		// Gán sự kiện `markerFound` và `markerLost` cho các marker
 		birdMarker.addEventListener('markerFound', () => unmuteVideo(birdVideo));
 		birdMarker.addEventListener('markerLost', () => muteVideo(birdVideo));
 
