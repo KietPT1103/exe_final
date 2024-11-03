@@ -25,39 +25,39 @@
 			<video id="video-01-02" muted autoplay loop="true" src="./media/video/cat.mp4"></video>
 			<video id="video-01-03" muted autoplay loop="true" src="./media/video/dog.mp4"></video>
 			<video id="video-01-04" muted autoplay loop="true" src="./media/video/fish.mp4"></video>
-			<video id="video-01-05" muted autoplay loop="true" src="./media/video/mouse.mp4"></video>
+			<video id="video-01-05" muted autoplay loop="true" src="./media/video/hamster.mp4"></video>
 		</a-assets>
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-bird2.patt' id="bird-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/bird_orange.glb"></a-entity> -->
-			<a-video muted id="bird-video" src="#video-01-01" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+			<a-video id="bird-video" src="#video-01-01" width="16" height="9" position="0 0 0" rotation="-90 0 0"
 				scale="0.1 0.2 1"></a-video>
 			<a-text value="The bird is singing." position="-2 1 -1" scale="2 2 2" color="#FF5733"
 				rotation="-90 0 0"></a-text>
 		</a-marker>
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-cat2.patt' id="cat-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/cat.glb"></a-entity> -->
-			<a-video muted id="cat-video" src="#video-01-02" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+			<a-video id="cat-video" src="#video-01-02" width="16" height="9" position="0 0 0" rotation="-90 0 0"
 				scale="0.1 0.3 1"></a-video>
 			<a-text value="The cat is saying hello." position="-1 1 -1" scale="1 1 1" color="#FF5733"
 				rotation="-90 0 0"></a-text>
 		</a-marker>
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-dog2.patt' id="dog-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/dog2.glb"></a-entity> -->
-			<a-video muted id="dog-video" src="#video-01-03" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+			<a-video id="dog-video" src="#video-01-03" width="16" height="9" position="0 0 0" rotation="-90 0 0"
 				scale="0.1 0.2 1"></a-video>
 			<a-text value="The dog really loves you." position="-2 1 -1" scale="2 2 2" color="#FF5733"
 				rotation="-90 0 0"></a-text>
 		</a-marker>
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-fish2.patt' id="fish-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/fish.glb"></a-entity> -->
-			<a-video muted id="fish-video" src="#video-01-04" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+			<a-video id="fish-video" src="#video-01-04" width="16" height="9" position="0 0 0" rotation="-90 0 0"
 				scale="0.2 0.2 1"></a-video>
 			<a-text value="The fish is swimming." position="-2 1 -1" scale="2 2 2" color="#FF5733"
 				rotation="-90 0 0"></a-text>
 		</a-marker>
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-mouse2.patt' id="mouse-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/mouse.glb"></a-entity> -->
-			<a-video muted id="mouse-video" src="#video-01-05" width="16" height="9" position="0 0 0" rotation="-90 0 0"
+			<a-video id="mouse-video" src="#video-01-05" width="16" height="9" position="0 0 0" rotation="-90 0 0"
 				scale="0.1 0.2 1"></a-video>
 			<a-text value="Look! There is a cute hamster." position="-1 1 -1" scale="1 1 1" color="#FF5733"
 				rotation="-90 0 0"></a-text>
@@ -66,11 +66,6 @@
 	</a-scene>
 
 	<script>
-		const videos = document.querySelectorAll('a-video');
-		videos.forEach(video => {
-			video.components.material.material.map.image.muted = true;
-		});
-
 		// Lắng nghe sự kiện khi marker được quét
 		const birdMarker = document.querySelector('#bird-marker');
 		const catMarker = document.querySelector('#cat-marker');
@@ -93,7 +88,7 @@
 		// Hàm tắt âm thanh cho video
 		function muteVideo(video) {
 			video.muted = true;
-			video.pause();
+			// video.pause();
 		}
 
 		// Gán sự kiện `markerFound` và `markerLost` cho các marker
