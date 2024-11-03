@@ -21,35 +21,35 @@
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-bird2.patt' id="bird-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/bird_orange.glb"></a-entity> -->
 			<a-video id="bird-video" src="./media/video/bird.mp4" width="16" height="9" position="0 0 0"
-				rotation="-90 0 0" scale="0.1 0.2 1" muted></a-video>
+				rotation="-90 0 0" scale="0.1 0.2 1" muted="true"></a-video>
 			<a-text value="The bird is singing." position="-2 1 -1" scale="2 2 2" color="#FF5733"
 				rotation="-90 0 0"></a-text>
 		</a-marker>
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-cat2.patt' id="cat-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/cat.glb"></a-entity> -->
 			<a-video id="cat-video" src="./media/video/cat.mp4" width="16" height="9" position="0 0 0"
-				rotation="-90 0 0" scale="0.1 0.3 1" muted></a-video>
+				rotation="-90 0 0" scale="0.1 0.3 1" muted="true"></a-video>
 			<a-text value="The cat is saying hello." position="-1 1 -1" scale="1 1 1" color="#FF5733"
 				rotation="-90 0 0"></a-text>
 		</a-marker>
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-dog2.patt' id="dog-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/dog2.glb"></a-entity> -->
 			<a-video id="dog-video" src="./media/video/dog.mp4" width="16" height="9" position="0 0 0"
-				rotation="-90 0 0" scale="0.1 0.2 1" muted></a-video>
+				rotation="-90 0 0" scale="0.1 0.2 1" muted="true"></a-video>
 			<a-text value="The dog really loves you." position="-2 1 -1" scale="2 2 2" color="#FF5733"
 				rotation="-90 0 0"></a-text>
 		</a-marker>
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-fish2.patt' id="fish-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/fish.glb"></a-entity> -->
 			<a-video id="fish-video" src="./media/video/fish.mp4" width="16" height="9" position="0 0 0"
-				rotation="-90 0 0" scale="0.2 0.2 1" muted></a-video>
+				rotation="-90 0 0" scale="0.2 0.2 1" muted="true"></a-video>
 			<a-text value="The fish is swimming." position="-2 1 -1" scale="2 2 2" color="#FF5733"
 				rotation="-90 0 0"></a-text>
 		</a-marker>
 		<a-marker preset='custom' type='pattern' url='/marker/pattern-mouse2.patt' id="mouse-marker">
 			<!-- <a-entity position="0 0 0" rotation="-90 0 0" scale="1 1 1" gltf-model="/media/models/mouse.glb"></a-entity> -->
 			<a-video id="mouse-video" src="./media/video/hamster.mp4" width="16" height="9" position="0 0 0"
-				rotation="-90 0 0" scale="0.1 0.2 1" muted></a-video>
+				rotation="-90 0 0" scale="0.1 0.2 1" muted="true"></a-video>
 			<a-text value="Look! There is a cute hamster." position="-1 1 -1" scale="1 1 1" color="#FF5733"
 				rotation="-90 0 0"></a-text>
 		</a-marker>
@@ -57,33 +57,4 @@
 	</a-scene>
 
 
-	<script>
-		function checkMarkersAndPlayAudio() {
-			// Lấy các marker và video
-			const markers = [
-				{ marker: document.getElementById('bird-marker'), video: document.getElementById('bird-video') },
-				{ marker: document.getElementById('cat-marker'), video: document.getElementById('cat-video') },
-				{ marker: document.getElementById('mouse-marker'), video: document.getElementById('mouse-video') },
-				{ marker: document.getElementById('dog-marker'), video: document.getElementById('dog-video') },
-				{ marker: document.getElementById('fish-marker'), video: document.getElementById('fish-video') },
-				// Thêm các marker-video khác ở đây
-			];
-
-			// Kiểm tra từng marker
-			markers.forEach(item => {
-				const { marker, video } = item;
-				// Nếu marker hiển thị
-				if (marker.object3D.visible) {
-					if (video.paused) video.play();
-					video.muted = false; // Bật âm thanh
-				} else {
-					video.muted = true; // Tắt âm thanh
-					if (!video.paused) video.pause();
-				}
-			});
-		}
-
-		// Thiết lập kiểm tra mỗi 500ms
-		setInterval(checkMarkersAndPlayAudio, 500);
-	</script>
 </body>
